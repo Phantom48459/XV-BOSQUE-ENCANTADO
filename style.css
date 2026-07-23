@@ -1,0 +1,123 @@
+/* ===================== */
+/* RESET */
+/* ===================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:#08140d;
+
+    color:white;
+
+}
+
+/* ===================== */
+/* HERO */
+/* ===================== */
+
+.hero{
+
+    height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    background:
+    linear-gradient(
+        rgba(4,12,7,.55),
+        rgba(4,12,7,.75)
+    );
+
+}
+
+.overlay{
+
+    width:min(90%,700px);
+
+}
+
+.welcome{
+
+    font-size:18px;
+
+    letter-spacing:3px;
+
+    margin-bottom:20px;
+
+    color:#d4af37;
+
+}
+
+.name{
+
+    font-family:'Cinzel',serif;
+
+    font-size:clamp(60px,10vw,110px);
+
+    font-weight:600;
+
+}
+
+.subtitle{
+
+    margin-top:15px;
+
+    font-weight:300;
+
+    letter-spacing:5px;
+
+}
+
+.date{
+
+    margin-top:25px;
+
+    color:#d6d6d6;
+
+}
+
+button{
+
+    margin-top:50px;
+
+    padding:18px 40px;
+
+    border:none;
+
+    border-radius:50px;
+
+    cursor:pointer;
+
+    background:#d4af37;
+
+    color:#08140d;
+
+    font-size:18px;
+
+    transition:.35s;
+
+}
+
+button:hover{
+
+    transform:translateY(-3px);
+
+}
