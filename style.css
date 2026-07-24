@@ -1629,10 +1629,8 @@ button:hover {
 .fireflies {
     position: fixed;
     inset: 0;
-    z-index: 5;
-
+    z-index: 1500;
     overflow: hidden;
-
     pointer-events: none;
 }
 
@@ -1647,12 +1645,12 @@ button:hover {
 
     border-radius: 50%;
 
-    background: rgba(255, 225, 112, 0.95);
+    background: rgba(255, 239, 140, 1);
 
     box-shadow:
-        0 0 5px rgba(255, 225, 112, 0.95),
-        0 0 12px rgba(255, 210, 70, 0.75),
-        0 0 22px rgba(255, 210, 70, 0.38);
+        0 0 8px rgba(255, 244, 165, 1),
+        0 0 18px rgba(255, 218, 80, 0.95),
+        0 0 34px rgba(255, 190, 40, 0.7);
 
     opacity: 0;
 
@@ -1661,28 +1659,34 @@ button:hover {
         fireflyMove var(--move-duration) ease-in-out infinite alternate;
 
     animation-delay: var(--delay);
+
+    will-change: transform, opacity;
 }
 
 @keyframes fireflyGlow {
-
     0%,
     100% {
-        opacity: 0.08;
-        transform: scale(0.7);
+        opacity: 0.18;
+        transform: scale(0.75);
     }
 
-    45% {
-        opacity: 0.9;
+    35% {
+        opacity: 0.75;
+        transform: scale(1);
     }
 
-    60% {
-        opacity: 0.35;
-        transform: scale(1.25);
+    55% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+
+    75% {
+        opacity: 0.45;
+        transform: scale(0.95);
     }
 }
 
 @keyframes fireflyMove {
-
     0% {
         translate: 0 0;
     }
@@ -1706,8 +1710,16 @@ button:hover {
     }
 }
 
-@media (prefers-reduced-motion: reduce) {
+@media (max-width: 600px) {
+    .firefly {
+        box-shadow:
+            0 0 9px rgba(255, 244, 165, 1),
+            0 0 20px rgba(255, 218, 80, 1),
+            0 0 38px rgba(255, 190, 40, 0.8);
+    }
+}
 
+@media (prefers-reduced-motion: reduce) {
     .firefly {
         animation: fireflyGlow 4s ease-in-out infinite;
     }

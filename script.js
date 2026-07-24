@@ -298,7 +298,7 @@ function crearLuciernagas() {
     contenedor.innerHTML = "";
 
     const esCelular = window.innerWidth <= 600;
-    const cantidad = esCelular ? 14 : 24;
+    const cantidad = esCelular ? 22 : 30;
 
     for (let i = 0; i < cantidad; i++) {
 
@@ -306,7 +306,10 @@ function crearLuciernagas() {
 
         luciernaga.classList.add("firefly");
 
-        const tamaño = Math.random() * 3 + 2;
+        const tamaño = esCelular
+            ? Math.random() * 3.5 + 3
+            : Math.random() * 3 + 2.5;
+
         const movimientoX = Math.random() * 130 - 65;
         const movimientoY = Math.random() * 150 - 75;
 
@@ -315,9 +318,22 @@ function crearLuciernagas() {
             `${tamaño}px`
         );
 
+        let posicionHorizontal;
+
+        if (Math.random() < 0.65) {
+
+            posicionHorizontal = Math.random() < 0.5
+                ? Math.random() * 28
+                : Math.random() * 28 + 72;
+
+        } else {
+
+            posicionHorizontal = Math.random() * 100;
+        }
+
         luciernaga.style.setProperty(
             "--left",
-            `${Math.random() * 100}%`
+            `${posicionHorizontal}%`
         );
 
         luciernaga.style.setProperty(
