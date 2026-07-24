@@ -149,7 +149,7 @@ body{
     line-height:1.05;
 
     letter-spacing:1px;
-    
+
 }
 
 .subtitle {
@@ -1377,5 +1377,248 @@ button:hover {
 
         width: 43px;
         height: 43px;
+    }
+}
+/* ===================== */
+/* MENSAJE DE MÍA */
+/* ===================== */
+
+.message-section {
+    padding: 28px 18px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(53, 101, 64, 0.72),
+            rgba(4, 15, 8, 0.98) 72%
+        );
+}
+
+.message-card {
+    width: min(100%, 760px);
+
+    padding: 42px 30px;
+
+    border: 1px solid rgba(212, 175, 55, 0.42);
+    border-radius: 25px;
+
+    background: rgba(7, 24, 13, 0.84);
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.5),
+        inset 0 0 30px rgba(212, 175, 55, 0.04);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.message-letter {
+    position: relative;
+
+    max-width: 590px;
+    margin: 30px auto 0;
+    padding: 36px 34px 30px;
+
+    border: 1px solid rgba(243, 216, 120, 0.32);
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(238, 226, 193, 0.10),
+            rgba(8, 30, 16, 0.55)
+        );
+
+    box-shadow:
+        inset 0 0 35px rgba(212, 175, 55, 0.05),
+        0 15px 35px rgba(0, 0, 0, 0.28);
+}
+
+.message-quote {
+    position: absolute;
+    top: -17px;
+    left: 22px;
+
+    color: #d4af37;
+
+    font-family: Georgia, serif;
+    font-size: 75px;
+    line-height: 1;
+}
+
+.message-letter p {
+    margin: 0 0 18px;
+
+    color: #e3ded2;
+
+    font-size: 16px;
+    line-height: 1.85;
+}
+
+.message-letter p:last-child {
+    margin-bottom: 0;
+}
+
+.message-signature {
+    padding-top: 9px;
+
+    color: #f3d878 !important;
+
+    font-family: 'Cinzel', serif;
+    font-size: 18px !important;
+    line-height: 1.6 !important;
+}
+
+/* ===================== */
+/* DESPEDIDA */
+/* ===================== */
+
+.farewell-section {
+    padding: 28px 18px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    background-image:
+        linear-gradient(
+            rgba(2, 12, 6, 0.55),
+            rgba(2, 12, 6, 0.88)
+        ),
+        url("assets/img/bosque-portada.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.farewell-card {
+    width: min(100%, 720px);
+
+    padding: 50px 30px;
+
+    border: 1px solid rgba(212, 175, 55, 0.46);
+    border-radius: 28px;
+
+    background: rgba(4, 20, 10, 0.72);
+
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.58),
+        inset 0 0 50px rgba(212, 175, 55, 0.05);
+
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+}
+
+.farewell-light {
+    color: #f3d878;
+
+    font-size: 35px;
+
+    text-shadow:
+        0 0 12px rgba(243, 216, 120, 0.8),
+        0 0 28px rgba(243, 216, 120, 0.45);
+
+    animation: farewellGlow 2.4s ease-in-out infinite;
+}
+
+.farewell-title {
+    max-width: 600px;
+    margin: 15px auto;
+
+    color: #f5eddc;
+
+    font-family: 'Cinzel', serif;
+    font-size: clamp(34px, 6vw, 64px);
+    font-weight: 500;
+    line-height: 1.12;
+}
+
+.farewell-text {
+    max-width: 500px;
+    margin: 22px auto;
+
+    color: #d8d2c4;
+
+    font-size: 17px;
+    line-height: 1.75;
+}
+
+.farewell-name {
+    margin-top: 30px;
+
+    color: #f3d878;
+
+    font-family: 'Cinzel', serif;
+    font-size: clamp(27px, 5vw, 45px);
+    font-weight: 600;
+}
+
+.farewell-xv {
+    margin-top: 9px;
+
+    color: #f2eee4;
+
+    font-size: 14px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+.restart-button {
+    margin-top: 34px;
+}
+
+@keyframes farewellGlow {
+
+    0%,
+    100% {
+        opacity: 0.65;
+        transform: scale(0.92);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+@media (max-width: 600px) {
+
+    .message-section,
+    .farewell-section {
+        padding: 16px 12px;
+    }
+
+    .message-card {
+        padding: 31px 15px;
+    }
+
+    .message-letter {
+        padding: 34px 19px 25px;
+    }
+
+    .message-letter p {
+        font-size: 14px;
+        line-height: 1.75;
+    }
+
+    .farewell-card {
+        padding: 40px 18px;
+    }
+
+    .farewell-title {
+        font-size: clamp(32px, 10vw, 47px);
+    }
+
+    .farewell-text {
+        font-size: 15px;
     }
 }
