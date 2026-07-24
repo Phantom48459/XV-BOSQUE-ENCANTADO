@@ -13,7 +13,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css?v=2">
+    <link rel="stylesheet" href="style.css?v=4">
 </head>
 
 <body>
@@ -60,17 +60,91 @@
 
         <div class="navigation-buttons">
 
+    <button
+        type="button"
+        class="back-button"
+        onclick="mostrarPagina('portada')"
+    >
+        Regresar
+    </button>
+
+    <button
+        type="button"
+        onclick="mostrarPagina('fecha')"
+    >
+        Continuar
+    </button>
+
+</div>
+
+    </div>
+
+</section>
+<!-- ===================== -->
+<!-- FECHA DEL EVENTO -->
+<!-- ===================== -->
+
+<section class="page date-section" id="fecha">
+
+    <div class="date-card">
+
+        <p class="section-small-title">
+            Guarda esta fecha
+        </p>
+
+        <div class="ornament">✦</div>
+
+        <h2 class="section-title">
+            20 de septiembre de 2026
+        </h2>
+
+        <p class="event-time">
+            7:00 p. m.
+        </p>
+
+        <p class="countdown-message">
+            La magia comenzará en:
+        </p>
+
+        <div class="countdown">
+
+            <div class="countdown-box">
+                <span id="days">00</span>
+                <small>Días</small>
+            </div>
+
+            <div class="countdown-box">
+                <span id="hours">00</span>
+                <small>Horas</small>
+            </div>
+
+            <div class="countdown-box">
+                <span id="minutes">00</span>
+                <small>Minutos</small>
+            </div>
+
+            <div class="countdown-box">
+                <span id="seconds">00</span>
+                <small>Segundos</small>
+            </div>
+
+        </div>
+
+        <p id="countdownFinished" class="countdown-finished"></p>
+
+        <div class="navigation-buttons">
+
             <button
                 type="button"
                 class="back-button"
-                onclick="mostrarPagina('portada')"
+                onclick="mostrarPagina('invitacion')"
             >
                 Regresar
             </button>
 
             <button
                 type="button"
-                onclick="mostrarPagina('fecha')"
+                onclick="mostrarPagina('ubicacion')"
             >
                 Continuar
             </button>
@@ -81,7 +155,7 @@
 
 </section>
 
-<script src="script.js"></script>
+<script src="script.js?v=4"></script>
 
 </body>
 
