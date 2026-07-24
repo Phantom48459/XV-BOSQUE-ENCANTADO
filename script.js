@@ -49,3 +49,20 @@ async function loadGuest() {
 }
 
 loadGuest();
+
+function mostrarPagina(idPagina) {
+
+    const paginas = document.querySelectorAll(".page");
+
+    paginas.forEach(function(pagina) {
+        pagina.classList.remove("active");
+    });
+
+    const paginaSeleccionada = document.getElementById(idPagina);
+
+    if (paginaSeleccionada) {
+        paginaSeleccionada.classList.add("active");
+        paginaSeleccionada.scrollTop = 0;
+    }
+
+}

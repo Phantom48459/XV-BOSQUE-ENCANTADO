@@ -13,60 +13,69 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=2">
 </head>
 
 <body>
 
-<section class="hero">
+<section class="page hero active" id="portada">
 
     <div class="overlay">
 
-        <p class="welcome">
-            ✨ Bienvenidos ✨
-        </p>
+        <p class="welcome">BIENVENIDOS AL BOSQUE ENCANTADO</p>
 
-        <h1 class="name">
-            Sofía
-        </h1>
+        <h1 class="name">Nombre</h1>
 
-        <h2 class="subtitle">
-            Mis XV Años
-        </h2>
+        <p class="subtitle">MIS XV AÑOS</p>
 
-        <p class="date">
-            20 de Septiembre de 2026
-        </p>
+        <p class="date">Fecha del evento</p>
 
-        <button id="enterButton">
+        <button type="button" onclick="mostrarPagina('invitado')">
             Entrar al bosque
         </button>
 
     </div>
 
 </section>
-<section class="guest-section" id="invitacion">
 
-        <div class="guest-card">
+<section class="page guest-section" id="invitado">
 
-            <p class="guest-introduction">
-                El bosque ha reservado un lugar especial para
-            </p>
+    <div class="guest-card">
 
-        <div class="ornament">✦</div>
+        <p class="guest-introduction">
+            Con mucha alegría invitamos a:
+        </p>
 
-        <h2 id="guestName" class="guest-name">
+        <div class="ornament">❦</div>
+
+        <h2 class="guest-name" id="guestName">
             Invitado especial
         </h2>
 
-        <div class="ornament">✦</div>
+        <div class="ornament">❦</div>
 
         <p class="invitation-text">
-            Nos complace invitarte a celebrar una noche llena de magia,
-            alegría y momentos inolvidables.
+            A compartir con nosotros una noche llena de magia.
         </p>
 
-        <p id="guestError" class="guest-error"></p>
+        <div class="navigation-buttons">
+
+            <button
+                type="button"
+                class="back-button"
+                onclick="mostrarPagina('portada')"
+            >
+                Regresar
+            </button>
+
+            <button
+                type="button"
+                onclick="mostrarPagina('fecha')"
+            >
+                Continuar
+            </button>
+
+        </div>
 
     </div>
 
