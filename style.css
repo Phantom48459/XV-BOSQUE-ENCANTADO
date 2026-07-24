@@ -138,8 +138,20 @@ body{
     color: #d4af37;
 }
 
-.name span{
-    display:block;
+.name{
+
+    font-family:'Cinzel', serif;
+
+    font-size:clamp(42px,9vw,72px);
+
+    font-weight:600;
+
+    line-height:1.05;
+
+    letter-spacing:1px;
+
+    white-space:normal;
+
 }
 
 .subtitle {
