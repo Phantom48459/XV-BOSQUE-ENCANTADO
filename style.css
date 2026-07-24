@@ -28,30 +28,48 @@ body{
 /* HERO */
 /* ===================== */
 
-.hero{
+.hero {
+    min-height: 100svh;
 
-    height:100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    display:flex;
+    position: relative;
+    overflow: hidden;
 
-    justify-content:center;
+    padding: 30px 20px;
 
-    align-items:center;
+    text-align: center;
 
-    text-align:center;
+    background-image:
+        linear-gradient(
+            rgba(4, 12, 7, 0.35),
+            rgba(4, 12, 7, 0.70)
+        ),
+        url("assets/img/bosque-portada.png");
 
-    background:
-    linear-gradient(
-        rgba(4,12,7,.55),
-        rgba(4,12,7,.75)
-    );
-
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-.overlay{
+.overlay {
+    width: min(90%, 700px);
 
-    width:min(90%,700px);
+    padding: 35px 25px;
 
+    border-radius: 25px;
+
+    background: rgba(3, 15, 8, 0.22);
+
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+
+    text-shadow: 0 3px 15px rgba(0, 0, 0, 0.95);
+
+    position: relative;
+    z-index: 2;
 }
 
 .welcome{
@@ -203,5 +221,44 @@ button:hover{
 @media (max-width: 600px) {
     .guest-card {
         padding: 50px 22px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .hero {
+        min-height: 100svh;
+        padding: 20px 15px;
+
+        background-position: center center;
+    }
+
+    .overlay {
+        width: 100%;
+        padding: 28px 18px;
+    }
+
+    .welcome {
+        font-size: 14px;
+        letter-spacing: 2px;
+    }
+
+    .name {
+        font-size: clamp(48px, 18vw, 75px);
+    }
+
+    .subtitle {
+        font-size: 14px;
+        letter-spacing: 3px;
+    }
+
+    .date {
+        font-size: 15px;
+    }
+
+    button {
+        margin-top: 35px;
+        padding: 15px 30px;
+        font-size: 16px;
     }
 }
