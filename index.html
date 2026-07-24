@@ -30,9 +30,9 @@
 
         <p class="date">Fecha del evento</p>
 
-        <button type="button" onclick="mostrarPagina('invitado')">
-            Entrar al bosque
-        </button>
+       <button onclick="entrarAlBosque()">
+    Entrar al bosque
+</button>
 
     </div>
 
@@ -310,5 +310,53 @@
 <script src="script.js?v=6"></script>
 
 </body>
+<!-- ===================== -->
+<!-- MÚSICA DE FONDO -->
+<!-- ===================== -->
+
+<audio id="backgroundMusic" loop preload="auto">
+    <source
+        src="assets/audio/melodia-bosque.mp3"
+        type="audio/mpeg"
+    >
+</audio>
+
+<button
+    type="button"
+    class="music-button"
+    id="musicButton"
+    onclick="controlarMusica()"
+    aria-label="Reproducir música"
+>
+    <span id="musicIcon">♫</span>
+</button>
+
+<!-- ===================== -->
+<!-- TRANSICIÓN DEL BOSQUE -->
+<!-- ===================== -->
+
+<div class="forest-transition" id="forestTransition">
+
+    <div class="forest-branch forest-branch-left">
+        <div class="branch-decoration">
+            <span>🌿</span>
+            <span>🍃</span>
+            <span>🌿</span>
+        </div>
+    </div>
+
+    <div class="forest-transition-center">
+        <span class="transition-light">✦</span>
+    </div>
+
+    <div class="forest-branch forest-branch-right">
+        <div class="branch-decoration">
+            <span>🌿</span>
+            <span>🍃</span>
+            <span>🌿</span>
+        </div>
+    </div>
+
+</div>
 
 </html>

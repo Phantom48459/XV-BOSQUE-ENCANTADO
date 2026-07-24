@@ -50,21 +50,127 @@ async function loadGuest() {
 
 loadGuest();
 
+/* ===================== */
+/* CAMBIO ENTRE PANTALLAS */
+/* ===================== */
+
+let transitionInProgress = false;
+
 function mostrarPagina(idPagina) {
 
-    const paginas = document.querySelectorAll(".page");
-
-    paginas.forEach(function(pagina) {
-        pagina.classList.remove("active");
-    });
-
-    const paginaSeleccionada = document.getElementById(idPagina);
-
-    if (paginaSeleccionada) {
-        paginaSeleccionada.classList.add("active");
-        paginaSeleccionada.scrollTop = 0;
+    if (transitionInProgress) {
+        return;
     }
 
+    const nextPage = document.getElementById(idPagina);
+    const transition = document.getElementById(
+        "forestTransition"
+    );
+
+    if (!nextPage) {
+        console.error(
+            `No existe una pantalla con el id: ${idPagina}`
+        );
+
+        return;
+    }
+
+    transitionInProgress = true;
+
+    transition.classList.add("active");
+
+    window.setTimeout(() => {
+
+        document.querySelectorAll(".page").forEach((page) => {
+            page.classList.remove("active");
+        });
+
+        nextPage.classList.add("active");
+
+        window.scrollTo({
+            top: 0,
+            behavior: "instant"
+        });
+
+    }, 520);
+
+    window.setTimeout(() => {
+
+        transition.classList.remove("active");
+
+    }, 760);
+
+    window.setTimeout(() => {
+
+        transitionInProgress = false;
+
+    }, 1350);
+}
+/* ===================== */
+/* CONTROL DE MÚSICA */
+/* ===================== */
+
+let musicPlaying = false;
+
+function controlarMusica() {
+
+    const music = document.getElementById(
+        "backgroundMusic"
+    );
+
+    const button = document.getElementById(
+        "musicButton"
+    );
+
+    const icon = document.getElementById(
+        "musicIcon"
+    );
+
+    if (!music || !button || !icon) {
+        return;
+    }
+
+    if (musicPlaying) {
+
+        music.pause();
+
+        musicPlaying = false;
+
+        icon.textContent = "♫";
+
+        button.classList.remove("playing");
+
+        button.setAttribute(
+            "aria-label",
+            "Reproducir música"
+        );
+
+    } else {
+
+        music.play()
+            .then(() => {
+
+                musicPlaying = true;
+
+                icon.textContent = "Ⅱ";
+
+                button.classList.add("playing");
+
+                button.setAttribute(
+                    "aria-label",
+                    "Pausar música"
+                );
+
+            })
+            .catch((error) => {
+
+                console.error(
+                    "No se pudo reproducir la música:",
+                    error
+                );
+
+            });
+    }
 }
 /* ===================== */
 /* CUENTA REGRESIVA */
@@ -129,3 +235,12 @@ function updateCountdown() {
 updateCountdown();
 
 setInterval(updateCountdown, 1000);
+
+function entrarAlBosque() {
+
+    if (!musicPlaying) {
+        controlarMusica();
+    }
+
+    mostrarPagina("invitacion");
+}
