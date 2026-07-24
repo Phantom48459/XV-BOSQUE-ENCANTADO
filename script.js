@@ -241,3 +241,44 @@ function entrarAlBosque() {
 
     mostrarPagina("invitado");
 }
+function abrirFoto(rutaFoto) {
+
+    const viewer = document.getElementById("photoViewer");
+    const viewerImage = document.getElementById("photoViewerImage");
+
+    viewerImage.src = rutaFoto;
+
+    viewer.classList.add("active");
+
+    document.body.style.overflow = "hidden";
+
+}
+
+function cerrarFoto() {
+
+    const viewer = document.getElementById("photoViewer");
+    const viewerImage = document.getElementById("photoViewerImage");
+
+    viewer.classList.remove("active");
+
+    document.body.style.overflow = "";
+
+    setTimeout(() => {
+
+        viewerImage.src = "";
+
+    },300);
+
+}
+
+document.addEventListener("click", function(e){
+
+    const viewer=document.getElementById("photoViewer");
+
+    if(e.target===viewer){
+
+        cerrarFoto();
+
+    }
+
+});

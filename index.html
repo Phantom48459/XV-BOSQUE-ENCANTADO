@@ -474,6 +474,74 @@
     </div>
 
 </section>
+<!-- ===================== -->
+<!-- GALERÍA -->
+<!-- ===================== -->
+
+<section class="page gallery-section" id="galeria">
+
+    <div class="gallery-card">
+
+        <p class="section-small-title">
+            Recuerdos especiales
+        </p>
+
+        <div class="ornament">✦</div>
+
+        <h2 class="section-title">
+            Galería
+        </h2>
+
+        <p class="gallery-description">
+            Algunos momentos que forman parte de esta hermosa etapa.
+        </p>
+
+        <div class="gallery-grid">
+
+            <button class="gallery-item" onclick="abrirFoto('assets/img/foto1.jpg')">
+                <img src="assets/img/foto1.jpg" alt="">
+            </button>
+
+            <button class="gallery-item" onclick="abrirFoto('assets/img/foto2.jpg')">
+                <img src="assets/img/foto2.jpg" alt="">
+            </button>
+
+            <button class="gallery-item" onclick="abrirFoto('assets/img/foto3.jpg')">
+                <img src="assets/img/foto3.jpg" alt="">
+            </button>
+
+            <button class="gallery-item" onclick="abrirFoto('assets/img/foto4.jpg')">
+                <img src="assets/img/foto4.jpg" alt="">
+            </button>
+
+            <button class="gallery-item" onclick="abrirFoto('assets/img/foto5.jpg')">
+                <img src="assets/img/foto5.jpg" alt="">
+            </button>
+
+            <button class="gallery-item" onclick="abrirFoto('assets/img/foto6.jpg')">
+                <img src="assets/img/foto6.jpg" alt="">
+            </button>
+
+        </div>
+
+        <div class="navigation-buttons">
+
+            <button
+                class="back-button"
+                onclick="mostrarPagina('programa')">
+                Regresar
+            </button>
+
+            <button
+                onclick="mostrarPagina('mensaje')">
+                Continuar
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
 
 <script src="script.js?v=6"></script>
 
@@ -523,6 +591,20 @@
             <span>🌿</span>
         </div>
     </div>
+
+</div>
+<div class="photo-viewer" id="photoViewer">
+
+    <button
+        class="photo-viewer-close"
+        onclick="cerrarFoto()">
+        ×
+    </button>
+
+    <img
+        id="photoViewerImage"
+        src=""
+        alt="">
 
 </div>
 
