@@ -310,44 +310,7 @@ button:hover {
     }
 }
 
-@media (max-width: 600px) {
 
-    .hero {
-        min-height: 100svh;
-        padding: 20px 15px;
-
-        background-position: center center;
-    }
-
-    .overlay {
-        width: 100%;
-        padding: 28px 18px;
-    }
-
-    .welcome {
-        font-size: 14px;
-        letter-spacing: 2px;
-    }
-
-    .name {
-        font-size: clamp(48px, 18vw, 75px);
-    }
-
-    .subtitle {
-        font-size: 14px;
-        letter-spacing: 3px;
-    }
-
-    .date {
-        font-size: 15px;
-    }
-
-    button {
-        margin-top: 35px;
-        padding: 15px 30px;
-        font-size: 16px;
-    }
-}
 /* ===================== */
 /* FECHA Y CUENTA REGRESIVA */
 /* ===================== */
