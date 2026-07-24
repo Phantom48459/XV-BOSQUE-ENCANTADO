@@ -1,12 +1,9 @@
-const enterButton = document.getElementById("enterButton");
+
 const guestName = document.getElementById("guestName");
+
 const guestError = document.getElementById("guestError");
 
-enterButton.addEventListener("click", () => {
-    document.getElementById("invitacion").scrollIntoView({
-        behavior: "smooth"
-    });
-});
+
 
 async function loadGuest() {
     const urlParameters = new URLSearchParams(window.location.search);
@@ -242,5 +239,5 @@ function entrarAlBosque() {
         controlarMusica();
     }
 
-    mostrarPagina("invitacion");
+    mostrarPagina("invitado");
 }
