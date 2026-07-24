@@ -467,3 +467,130 @@ button:hover{
         letter-spacing: 0;
     }
 }
+/* ===================== */
+/* UBICACIÓN DEL EVENTO */
+/* ===================== */
+
+.location-section {
+    padding: 30px 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(47, 91, 60, 0.8),
+            rgba(5, 18, 10, 0.98) 72%
+        );
+}
+
+.location-card {
+    width: min(100%, 800px);
+
+    padding: 40px 30px;
+
+    border: 1px solid rgba(212, 175, 55, 0.45);
+    border-radius: 25px;
+
+    background: rgba(7, 25, 14, 0.8);
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.5),
+        inset 0 0 30px rgba(212, 175, 55, 0.04);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.location-address {
+    margin-top: 15px;
+    margin-bottom: 25px;
+
+    color: #e6dfc9;
+
+    font-size: clamp(16px, 3vw, 20px);
+    line-height: 1.7;
+}
+
+.map-image-container {
+    width: 100%;
+    max-width: 650px;
+
+    margin: 0 auto 25px;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(212, 175, 55, 0.45);
+    border-radius: 18px;
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+}
+
+.map-image {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    max-height: 330px;
+    object-fit: cover;
+}
+
+.maps-button {
+    display: inline-block;
+
+    padding: 14px 24px;
+
+    border: 1px solid rgba(212, 175, 55, 0.75);
+    border-radius: 30px;
+
+    background: linear-gradient(
+        135deg,
+        #d4af37,
+        #f3d878
+    );
+
+    color: #142016;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+
+    text-decoration: none;
+
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.22);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.maps-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 12px 30px rgba(212, 175, 55, 0.35);
+}
+
+@media (max-width: 600px) {
+
+    .location-section {
+        padding: 18px 14px;
+    }
+
+    .location-card {
+        padding: 30px 16px;
+    }
+
+    .map-image {
+        max-height: 250px;
+    }
+
+    .maps-button {
+        width: 100%;
+        padding: 13px 15px;
+    }
+}
