@@ -1622,3 +1622,93 @@ button:hover {
         font-size: 15px;
     }
 }
+/* ===================== */
+/* LUCIÉRNAGAS */
+/* ===================== */
+
+.fireflies {
+    position: fixed;
+    inset: 0;
+    z-index: 5;
+
+    overflow: hidden;
+
+    pointer-events: none;
+}
+
+.firefly {
+    position: absolute;
+
+    width: var(--size);
+    height: var(--size);
+
+    left: var(--left);
+    top: var(--top);
+
+    border-radius: 50%;
+
+    background: rgba(255, 225, 112, 0.95);
+
+    box-shadow:
+        0 0 5px rgba(255, 225, 112, 0.95),
+        0 0 12px rgba(255, 210, 70, 0.75),
+        0 0 22px rgba(255, 210, 70, 0.38);
+
+    opacity: 0;
+
+    animation:
+        fireflyGlow var(--glow-duration) ease-in-out infinite,
+        fireflyMove var(--move-duration) ease-in-out infinite alternate;
+
+    animation-delay: var(--delay);
+}
+
+@keyframes fireflyGlow {
+
+    0%,
+    100% {
+        opacity: 0.08;
+        transform: scale(0.7);
+    }
+
+    45% {
+        opacity: 0.9;
+    }
+
+    60% {
+        opacity: 0.35;
+        transform: scale(1.25);
+    }
+}
+
+@keyframes fireflyMove {
+
+    0% {
+        translate: 0 0;
+    }
+
+    25% {
+        translate:
+            calc(var(--move-x) * 0.35)
+            calc(var(--move-y) * -0.25);
+    }
+
+    55% {
+        translate:
+            calc(var(--move-x) * -0.45)
+            calc(var(--move-y) * 0.45);
+    }
+
+    100% {
+        translate:
+            var(--move-x)
+            var(--move-y);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .firefly {
+        animation: fireflyGlow 4s ease-in-out infinite;
+    }
+}

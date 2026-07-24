@@ -282,3 +282,76 @@ document.addEventListener("click", function(e){
     }
 
 });
+
+/* ===================== */
+/* LUCIÉRNAGAS */
+/* ===================== */
+
+function crearLuciernagas() {
+
+    const contenedor = document.getElementById("fireflies");
+
+    if (!contenedor) {
+        return;
+    }
+
+    contenedor.innerHTML = "";
+
+    const esCelular = window.innerWidth <= 600;
+    const cantidad = esCelular ? 14 : 24;
+
+    for (let i = 0; i < cantidad; i++) {
+
+        const luciernaga = document.createElement("span");
+
+        luciernaga.classList.add("firefly");
+
+        const tamaño = Math.random() * 3 + 2;
+        const movimientoX = Math.random() * 130 - 65;
+        const movimientoY = Math.random() * 150 - 75;
+
+        luciernaga.style.setProperty(
+            "--size",
+            `${tamaño}px`
+        );
+
+        luciernaga.style.setProperty(
+            "--left",
+            `${Math.random() * 100}%`
+        );
+
+        luciernaga.style.setProperty(
+            "--top",
+            `${Math.random() * 100}%`
+        );
+
+        luciernaga.style.setProperty(
+            "--move-x",
+            `${movimientoX}px`
+        );
+
+        luciernaga.style.setProperty(
+            "--move-y",
+            `${movimientoY}px`
+        );
+
+        luciernaga.style.setProperty(
+            "--glow-duration",
+            `${Math.random() * 3 + 3}s`
+        );
+
+        luciernaga.style.setProperty(
+            "--move-duration",
+            `${Math.random() * 7 + 8}s`
+        );
+
+        luciernaga.style.setProperty(
+            "--delay",
+            `${Math.random() * -10}s`
+        );
+
+        contenedor.appendChild(luciernaga);
+    }
+}
+
+crearLuciernagas();
