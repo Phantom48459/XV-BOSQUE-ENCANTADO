@@ -4,73 +4,82 @@ const guestTable = document.getElementById("guestTable");
 const tableGuestName = document.getElementById("tableGuestName");
 const guestError = document.getElementById("guestError");
 
-
-
 async function loadGuest() {
     const urlParameters = new URLSearchParams(window.location.search);
     const guestId = urlParameters.get("id");
 
-    if (!guestId) {
-    guestName.textContent = "Invitado especial";
-    tableGuestName.textContent = "Invitado especial";
-    guestTable.textContent = "Por confirmar";
+    function mostrarInvitadoGeneral(mensaje = "") {
+        if (guestName) {
+            guestName.textContent = "Invitado especial";
+        }
 
-    if (guestError) {
-        guestError.textContent =
-            "Esta es una vista general de la invitación.";
-            
+        if (tableGuestName) {
+            tableGuestName.textContent = "Invitado especial";
+        }
+
+        if (guestTable) {
+            guestTable.textContent = "Por confirmar";
+        }
+
+        if (guestError) {
+            guestError.textContent = mensaje;
+        }
     }
 
-    return;
-    }}
+    if (!guestId) {
+        mostrarInvitadoGeneral(
+            "Esta es una vista general de la invitación."
+        );
+        return;
+    }
 
     try {
         const response = await fetch("./invitados.json");
 
         if (!response.ok) {
-            throw new Error("No fue posible cargar la lista de invitados.");
+            throw new Error(
+                "No fue posible cargar la lista de invitados."
+            );
         }
 
         const guests = await response.json();
         const selectedGuest = guests[guestId];
 
-       if (!selectedGuest) {
-    guestName.textContent = "Invitado especial";
-    tableGuestName.textContent = "Invitado especial";
-    guestTable.textContent = "Por confirmar";
+        if (!selectedGuest) {
+            mostrarInvitadoGeneral(
+                "El enlace de esta invitación no es válido."
+            );
+            return;
+        }
 
-    if (guestError) {
-        guestError.textContent =
-            "El enlace de esta invitación no es válido.";
-    }
+        if (guestName) {
+            guestName.textContent = selectedGuest.nombre;
+        }
 
-    return;
-}
+        if (tableGuestName) {
+            tableGuestName.textContent = selectedGuest.nombre;
+        }
 
-        guestName.textContent = selectedGuest.nombre;
-tableGuestName.textContent = selectedGuest.nombre;
+        if (guestTable) {
+            guestTable.textContent =
+                selectedGuest.mesa || "Por confirmar";
+        }
 
-guestTable.textContent =
-    selectedGuest.mesa || "Por confirmar";
-
-if (guestError) {
-    guestError.textContent = "";
-}
+        if (guestError) {
+            guestError.textContent = "";
+        }
 
     } catch (error) {
         console.error(error);
 
-        guestName.textContent = "Invitado especial";
-tableGuestName.textContent = "Invitado especial";
-guestTable.textContent = "Por confirmar";
-
-if (guestError) {
-    guestError.textContent =
-        "No fue posible cargar la invitación personalizada.";
-}
+        mostrarInvitadoGeneral(
+            "No fue posible cargar la invitación personalizada."
+        );
+    }
 }
 
 loadGuest();
+
 
 /* ===================== */
 /* CAMBIO ENTRE PANTALLAS */
