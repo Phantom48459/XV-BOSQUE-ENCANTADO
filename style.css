@@ -2119,3 +2119,129 @@ button:hover {
         animation: none;
     }
 }
+/* ===================== */
+/* NIEBLA DEL BOSQUE */
+/* ===================== */
+
+.forest-fog {
+    position: fixed;
+    inset: 0;
+
+    z-index: 800;
+
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.fog-layer {
+    position: absolute;
+
+    left: -60%;
+    width: 220%;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(245, 250, 245, 0.55) 0%,
+            rgba(210, 230, 215, 0.35) 35%,
+            rgba(155, 195, 165, 0.18) 58%,
+            transparent 78%
+        );
+
+    filter: blur(13px);
+    will-change: transform;
+}
+
+.fog-layer-one {
+    bottom: -3%;
+    height: 44%;
+    opacity: 0.9;
+
+    animation: fogMoveOne 20s ease-in-out infinite alternate;
+}
+
+.fog-layer-two {
+    bottom: 17%;
+    height: 30%;
+    opacity: 0.58;
+
+    animation: fogMoveTwo 27s ease-in-out infinite alternate;
+}
+
+.fog-layer-three {
+    bottom: 39%;
+    height: 20%;
+    opacity: 0.27;
+
+    filter: blur(20px);
+
+    animation: fogMoveThree 34s ease-in-out infinite alternate;
+}
+
+@keyframes fogMoveOne {
+    from {
+        transform: translateX(-9%) scale(1);
+    }
+
+    to {
+        transform: translateX(11%) scale(1.08);
+    }
+}
+
+@keyframes fogMoveTwo {
+    from {
+        transform: translateX(10%) scale(1.05);
+    }
+
+    to {
+        transform: translateX(-12%) scale(1);
+    }
+}
+
+@keyframes fogMoveThree {
+    from {
+        transform: translateX(-7%) scale(1);
+    }
+
+    to {
+        transform: translateX(8%) scale(1.12);
+    }
+}
+
+@media (max-width: 600px) {
+    .fog-layer {
+        left: -85%;
+        width: 270%;
+
+        background:
+            radial-gradient(
+                ellipse at center,
+                rgba(250, 255, 250, 0.7) 0%,
+                rgba(215, 235, 220, 0.46) 38%,
+                rgba(150, 195, 165, 0.24) 62%,
+                transparent 82%
+            );
+
+        filter: blur(9px);
+    }
+
+    .fog-layer-one {
+        bottom: 0;
+        height: 42%;
+        opacity: 1;
+    }
+
+    .fog-layer-two {
+        bottom: 21%;
+        height: 28%;
+        opacity: 0.7;
+    }
+
+    .fog-layer-three {
+        bottom: 43%;
+        height: 18%;
+        opacity: 0.35;
+    }
+}

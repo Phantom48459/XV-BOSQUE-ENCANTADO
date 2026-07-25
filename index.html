@@ -14,7 +14,7 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
  
-    <link rel="stylesheet" href="style.css?v=27">
+    <link rel="stylesheet" href="style.css?v=30">
 
 <style>
     h1.name {
@@ -45,11 +45,16 @@
 
         </p>
 
-       <button type="button" id="enterForestButton">
+       <button
+    type="button"
+    id="enterForestButton"
+    onclick="entrarAlBosque()"
+>
     Entrar al bosque
+
 </button>
 
-    </div>
+
 
 </section>
 
@@ -727,6 +732,15 @@
     </div>
 
 </section>
+<!-- NIEBLA DEL BOSQUE -->
+
+<div class="forest-fog" aria-hidden="true">
+    <div class="fog-layer fog-layer-one"></div>
+    <div class="fog-layer fog-layer-two"></div>
+    <div class="fog-layer fog-layer-three"></div>
+</div>
+
+
 
 <!-- LUCIÉRNAGAS -->
 
@@ -799,7 +813,7 @@
 
 </div>
 
-<script src="script.js?v=27"></script>
+<script src="script.js?v=30"></script>
 
 </body>
 
