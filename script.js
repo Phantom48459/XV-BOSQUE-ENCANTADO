@@ -1,6 +1,7 @@
 
 const guestName = document.getElementById("guestName");
-
+const guestTable = document.getElementById("guestTable");
+const tableGuestName = document.getElementById("tableGuestName");
 const guestError = document.getElementById("guestError");
 
 
@@ -10,11 +11,18 @@ async function loadGuest() {
     const guestId = urlParameters.get("id");
 
     if (!guestId) {
-        guestName.textContent = "Invitado especial";
+    guestName.textContent = "Invitado especial";
+    tableGuestName.textContent = "Invitado especial";
+    guestTable.textContent = "Por confirmar";
+
+    if (guestError) {
         guestError.textContent =
             "Esta es una vista general de la invitación.";
-        return;
+            
     }
+
+    return;
+    }}
 
     try {
         const response = await fetch("./invitados.json");
@@ -26,23 +34,40 @@ async function loadGuest() {
         const guests = await response.json();
         const selectedGuest = guests[guestId];
 
-        if (!selectedGuest) {
-            guestName.textContent = "Invitado especial";
-            guestError.textContent =
-                "El enlace de esta invitación no es válido.";
-            return;
-        }
+       if (!selectedGuest) {
+    guestName.textContent = "Invitado especial";
+    tableGuestName.textContent = "Invitado especial";
+    guestTable.textContent = "Por confirmar";
+
+    if (guestError) {
+        guestError.textContent =
+            "El enlace de esta invitación no es válido.";
+    }
+
+    return;
+}
 
         guestName.textContent = selectedGuest.nombre;
-        guestError.textContent = "";
+tableGuestName.textContent = selectedGuest.nombre;
+
+guestTable.textContent =
+    selectedGuest.mesa || "Por confirmar";
+
+if (guestError) {
+    guestError.textContent = "";
+}
 
     } catch (error) {
         console.error(error);
 
         guestName.textContent = "Invitado especial";
-        guestError.textContent =
-            "No fue posible cargar la invitación personalizada.";
-    }
+tableGuestName.textContent = "Invitado especial";
+guestTable.textContent = "Por confirmar";
+
+if (guestError) {
+    guestError.textContent =
+        "No fue posible cargar la invitación personalizada.";
+}
 }
 
 loadGuest();

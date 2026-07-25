@@ -460,6 +460,175 @@ button:hover {
     }
 }
 /* ===================== */
+/* MESA ASIGNADA */
+/* ===================== */
+
+.table-section {
+    padding: 30px 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow-y: auto;
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(49, 99, 64, 0.78),
+            rgba(5, 18, 10, 0.98) 72%
+        );
+}
+
+.table-card {
+    width: min(100%, 760px);
+    padding: 50px 35px;
+
+    border: 1px solid rgba(212, 175, 55, 0.48);
+    border-radius: 25px;
+
+    background: rgba(7, 25, 14, 0.8);
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.5),
+        inset 0 0 35px rgba(212, 175, 55, 0.05);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.table-introduction {
+    max-width: 520px;
+    margin: 5px auto 28px;
+
+    color: #d6d6d6;
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+.table-reservation {
+    position: relative;
+
+    width: min(100%, 330px);
+    margin: 0 auto;
+    padding: 25px 20px 28px;
+
+    border: 1px solid rgba(212, 175, 55, 0.7);
+    border-radius: 22px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(35, 75, 46, 0.75),
+            rgba(3, 15, 8, 0.88)
+        );
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.42),
+        0 0 25px rgba(212, 175, 55, 0.12),
+        inset 0 0 28px rgba(212, 175, 55, 0.06);
+}
+
+.table-reservation::before,
+.table-reservation::after {
+    content: "✦";
+
+    position: absolute;
+    top: 50%;
+
+    color: #d4af37;
+    font-size: 17px;
+
+    transform: translateY(-50%);
+}
+
+.table-reservation::before {
+    left: 18px;
+}
+
+.table-reservation::after {
+    right: 18px;
+}
+
+.table-label {
+    color: #e6dfc9;
+
+    font-family: 'Cinzel', serif;
+    font-size: 17px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+.table-number {
+    margin-top: 8px;
+
+    color: #f3d878;
+
+    font-family: 'Cinzel', serif;
+    font-size: clamp(48px, 11vw, 82px);
+    font-weight: 600;
+    line-height: 1.1;
+
+    overflow-wrap: anywhere;
+
+    text-shadow:
+        0 0 16px rgba(243, 216, 120, 0.35),
+        0 0 35px rgba(212, 175, 55, 0.18);
+}
+
+.table-guest-name {
+    margin-top: 28px;
+
+    color: #f3d878;
+
+    font-family: 'Cinzel', serif;
+    font-size: clamp(23px, 5vw, 38px);
+    font-weight: 500;
+    line-height: 1.35;
+}
+
+.table-message {
+    max-width: 520px;
+    margin: 15px auto 0;
+
+    color: #d6d6d6;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+@media (max-width: 600px) {
+
+    .table-section {
+        padding: 18px 14px;
+    }
+
+    .table-card {
+        padding: 37px 18px;
+    }
+
+    .table-introduction {
+        font-size: 15px;
+    }
+
+    .table-reservation {
+        width: min(100%, 285px);
+        padding: 22px 15px 25px;
+    }
+
+    .table-reservation::before {
+        left: 12px;
+    }
+
+    .table-reservation::after {
+        right: 12px;
+    }
+
+    .table-message {
+        font-size: 14px;
+    }
+}
+/* ===================== */
 /* UBICACIÓN DEL EVENTO */
 /* ===================== */
 
@@ -1731,6 +1900,7 @@ button:hover {
 .page.active .overlay,
 .page.active .guest-card,
 .page.active .date-card,
+.page.active .table-card,
 .page.active .location-card,
 .page.active .dress-card,
 .page.active .program-card,

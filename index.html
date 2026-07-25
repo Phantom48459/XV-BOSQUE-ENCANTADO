@@ -14,7 +14,7 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
  
-    <link rel="stylesheet" href="style.css?v=23">
+    <link rel="stylesheet" href="style.css?v=25">
 
 <style>
     h1.name {
@@ -159,6 +159,70 @@
 
             <button
                 type="button"
+                onclick="mostrarPagina('mesa')"
+            >
+                Continuar
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ===================== -->
+<!-- MESA ASIGNADA -->
+<!-- ===================== -->
+
+<section class="page table-section" id="mesa">
+
+    <div class="table-card">
+
+        <p class="section-small-title">
+            Hemos reservado
+        </p>
+
+        <div class="ornament">✦</div>
+
+        <h2 class="section-title">
+            Tu lugar en esta noche
+        </h2>
+
+        <p class="table-introduction">
+            Nos dará mucha alegría compartir esta celebración contigo.
+        </p>
+
+        <div class="table-reservation">
+
+            <p class="table-label">
+                Mesa
+            </p>
+
+            <div class="table-number" id="guestTable">
+                Por confirmar
+            </div>
+
+        </div>
+
+        <p class="table-guest-name" id="tableGuestName">
+            Invitado especial
+        </p>
+
+        <p class="table-message">
+            Este lugar ha sido reservado especialmente para ti.
+        </p>
+
+        <div class="navigation-buttons">
+
+            <button
+                type="button"
+                class="back-button"
+                onclick="mostrarPagina('fecha')"
+            >
+                Regresar
+            </button>
+
+            <button
+                type="button"
                 onclick="mostrarPagina('ubicacion')"
             >
                 Continuar
@@ -216,7 +280,7 @@
             <button
                 type="button"
                 class="back-button"
-                onclick="mostrarPagina('fecha')"
+                onclick="mostrarPagina('mesa')"
             >
                 Regresar
             </button>
@@ -735,7 +799,7 @@
 
 </div>
 
-<script src="script.js?v=23"></script>
+<script src="script.js?v=25"></script>
 
 </body>
 

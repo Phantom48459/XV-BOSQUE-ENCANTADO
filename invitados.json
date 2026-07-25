@@ -1,14 +1,18 @@
 {
   "001": {
-    "nombre": "Familia Gómez Hernández"
+    "nombre": "Familia Gómez Hernández",
+    "mesa": "12"
   },
   "002": {
-    "nombre": "Ana Martínez"
+    "nombre": "Ana Martínez",
+    "mesa": "5"
   },
   "003": {
-    "nombre": "Carlos y Laura"
+    "nombre": "Carlos y Laura",
+    "mesa": "8"
   },
   "004": {
-    "nombre": "Padrinos de la quinceañera"
+    "nombre": "Padrinos de la quinceañera",
+    "mesa": "Principal"
   }
 }
