@@ -1,10 +1,13 @@
-const guestName = document.getElementById("guestName")
+const guestName = document.getElementById("guestName");
 const guestTable = document.getElementById("guestTable");
 const tableGuestName = document.getElementById("tableGuestName");
 const guestError = document.getElementById("guestError");
 
 async function loadGuest() {
-    const urlParameters = new URLSearchParams(window.location.search);
+    const urlParameters = new URLSearchParams(
+        window.location.search
+    );
+
     const guestId = urlParameters.get("id");
 
     function mostrarInvitadoGeneral(mensaje = "") {
@@ -29,15 +32,18 @@ async function loadGuest() {
         mostrarInvitadoGeneral(
             "Esta es una vista general de la invitación."
         );
+
         return;
     }
 
     try {
-        const response = await fetch("./invitados.json");
+        const response = await fetch(
+            "./invitados.json?v=26"
+        );
 
         if (!response.ok) {
             throw new Error(
-                "No fue posible cargar la lista de invitados."
+                "No se pudo cargar invitados.json"
             );
         }
 
@@ -48,20 +54,24 @@ async function loadGuest() {
             mostrarInvitadoGeneral(
                 "El enlace de esta invitación no es válido."
             );
+
             return;
         }
 
         if (guestName) {
-            guestName.textContent = selectedGuest.nombre;
+            guestName.textContent =
+                selectedGuest.nombre;
         }
 
         if (tableGuestName) {
-            tableGuestName.textContent = selectedGuest.nombre;
+            tableGuestName.textContent =
+                selectedGuest.nombre;
         }
 
         if (guestTable) {
             guestTable.textContent =
-                selectedGuest.mesa || "Por confirmar";
+                selectedGuest.mesa ||
+                "Por confirmar";
         }
 
         if (guestError) {
@@ -69,7 +79,10 @@ async function loadGuest() {
         }
 
     } catch (error) {
-        console.error(error);
+        console.error(
+            "Error al cargar al invitado:",
+            error
+        );
 
         mostrarInvitadoGeneral(
             "No fue posible cargar la invitación personalizada."
@@ -96,6 +109,17 @@ function mostrarPagina(idPagina) {
     const transition = document.getElementById(
         "forestTransition"
     );
+
+    if (!transition) {
+    document.querySelectorAll(".page").forEach(
+        function (page) {
+            page.classList.remove("active");
+        }
+    );
+
+    nextPage.classList.add("active");
+    return;
+}
 
     if (!nextPage) {
         console.error(
@@ -142,29 +166,26 @@ function mostrarPagina(idPagina) {
 let musicPlaying = false;
 
 function controlarMusica() {
+    const music =
+        document.getElementById("backgroundMusic");
 
-    const music = document.getElementById(
-        "backgroundMusic"
-    );
+    const button =
+        document.getElementById("musicButton");
 
-    const button = document.getElementById(
-        "musicButton"
-    );
-
-    const icon = document.getElementById(
-        "musicIcon"
-    );
+    const icon =
+        document.getElementById("musicIcon");
 
     if (!music || !button || !icon) {
         return;
     }
 
+    
     if (musicPlaying) {
-
+        
         music.pause();
 
         musicPlaying = false;
-
+        
         icon.textContent = "♫";
 
         button.classList.remove("playing");
@@ -174,31 +195,52 @@ function controlarMusica() {
             "Reproducir música"
         );
 
-    } else {
+        return;
+    }
 
-        music.play()
-            .then(() => {
+    try {
+        const playResult = music.play();
 
-                musicPlaying = true;
+        if (
+            playResult &&
+            typeof playResult.then === "function"
+        ) {
+            playResult
+                .then(() => {
+                    musicPlaying = true;
+                    icon.textContent = "Ⅱ";
 
-                icon.textContent = "Ⅱ";
+                    button.classList.add("playing");
 
-                button.classList.add("playing");
+                    button.setAttribute(
+                        "aria-label",
+                        "Pausar música"
+                    );
+                })
+                .catch((error) => {
+                    console.log(
+                        "El navegador bloqueó la música:",
+                        error
+                    );
+                });
 
-                button.setAttribute(
-                    "aria-label",
-                    "Pausar música"
-                );
+        } else {
+            musicPlaying = true;
+            icon.textContent = "Ⅱ";
 
-            })
-            .catch((error) => {
+            button.classList.add("playing");
 
-                console.error(
-                    "No se pudo reproducir la música:",
-                    error
-                );
+            button.setAttribute(
+                "aria-label",
+                "Pausar música"
+            );
+        }
 
-            });
+    } catch (error) {
+        console.log(
+            "No se pudo iniciar la música:",
+            error
+        );
     }
 }
 /* ===================== */
@@ -266,16 +308,15 @@ updateCountdown();
 setInterval(updateCountdown, 1000);
 
 function entrarAlBosque() {
+    mostrarPagina("invitado");
 
     if (!musicPlaying) {
         controlarMusica();
     }
 
-    mostrarPagina("invitado");
+
 }
-const enterForestButton = document.getElementById(
-    "enterForestButton"
-);
+
 
 if (enterForestButton) {
     enterForestButton.addEventListener("click", entrarAlBosque);
