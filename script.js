@@ -1,5 +1,4 @@
-
-const guestName = document.getElementById("guestName");
+const guestName = document.getElementById("guestName")
 const guestTable = document.getElementById("guestTable");
 const tableGuestName = document.getElementById("tableGuestName");
 const guestError = document.getElementById("guestError");
@@ -119,10 +118,9 @@ function mostrarPagina(idPagina) {
         nextPage.classList.add("active");
 
         window.scrollTo({
-            top: 0,
-            behavior: "instant"
-        });
-
+    top: 0,
+    behavior: "auto"
+});
     }, 520);
 
     window.setTimeout(() => {
@@ -274,6 +272,17 @@ function entrarAlBosque() {
     }
 
     mostrarPagina("invitado");
+}
+const enterForestButton = document.getElementById(
+    "enterForestButton"
+);
+
+if (enterForestButton) {
+    enterForestButton.addEventListener("click", entrarAlBosque);
+    enterForestButton.addEventListener("touchend", function (event) {
+        event.preventDefault();
+        entrarAlBosque();
+    });
 }
 function abrirFoto(rutaFoto) {
 
