@@ -173,7 +173,7 @@ function controlarMusica() {
 /* CUENTA REGRESIVA */
 /* ===================== */
 
-const eventDate = new Date("2026-09-20T19:00:00-06:00");
+const eventDate = new Date("2026-10-10T18:30:00-06:00");
 
 function updateCountdown() {
 

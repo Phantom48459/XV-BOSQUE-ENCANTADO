@@ -1853,3 +1853,99 @@ button:hover {
         animation: none;
     }
 }
+/* ===================== */
+/* BRILLO EN BOTONES */
+/* ===================== */
+
+.navigation-buttons button,
+.maps-button,
+.restart-button {
+    position: relative;
+    overflow: hidden;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        filter 0.25s ease;
+
+    animation: buttonGlow 3.5s ease-in-out infinite;
+}
+
+.navigation-buttons button:hover,
+.maps-button:hover,
+.restart-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 6px 18px rgba(218, 177, 90, 0.35),
+        0 0 16px rgba(255, 220, 130, 0.25);
+}
+
+.navigation-buttons button:active,
+.maps-button:active,
+.restart-button:active {
+    transform: scale(0.96);
+    animation: none;
+}
+
+.navigation-buttons button::after,
+.maps-button::after,
+.restart-button::after {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: -120%;
+
+    width: 55%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 245, 205, 0.35),
+        transparent
+    );
+
+    transform: skewX(-20deg);
+
+    animation: buttonShine 4.5s ease-in-out infinite;
+}
+
+@keyframes buttonGlow {
+    0%,
+    100% {
+        box-shadow:
+            0 4px 12px rgba(0, 0, 0, 0.2),
+            0 0 0 rgba(255, 220, 130, 0);
+    }
+
+    50% {
+        box-shadow:
+            0 5px 16px rgba(0, 0, 0, 0.25),
+            0 0 15px rgba(255, 220, 130, 0.3);
+    }
+}
+
+@keyframes buttonShine {
+    0%,
+    65% {
+        left: -120%;
+    }
+
+    85%,
+    100% {
+        left: 150%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .navigation-buttons button,
+    .maps-button,
+    .restart-button,
+    .navigation-buttons button::after,
+    .maps-button::after,
+    .restart-button::after {
+        animation: none;
+    }
+}
