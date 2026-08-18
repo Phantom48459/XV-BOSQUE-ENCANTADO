@@ -20,120 +20,175 @@ async function loadGuest() {
     const guestId = urlParameters.get("id");
 
     function mostrarInvitadoGeneral(mensaje = "") {
-        if (guestName) {
-            guestName.textContent = "Invitado especial";
-        }
 
-        if (tableGuestName) {
-            tableGuestName.textContent = "Invitado especial";
-        }
-
-        if (guestTable) {
-            guestTable.textContent = "Por confirmar";
-        }
-
-        /* ===================== */
-/* ACOMPAÑANTE */
-/* ===================== */
-
-if (
-    selectedGuest.acompanante &&
-    selectedGuest.acompanante.mesa
-) {
-
-    if (companionName) {
-        companionName.textContent =
-            selectedGuest.acompanante.texto ||
-            "Tu acompañante";
+    if (guestName) {
+        guestName.textContent = "Invitado especial";
     }
 
-    if (companionTable) {
-        companionTable.textContent =
-            selectedGuest.acompanante.mesa;
+    if (tableGuestName) {
+        tableGuestName.textContent = "Invitado especial";
     }
 
-    if (companionTableBlock) {
-        companionTableBlock.hidden = false;
+    if (guestTable) {
+        guestTable.textContent = "Por confirmar";
     }
 
-} else {
-
+    // Ocultar acompañante en invitaciones generales
     if (companionTableBlock) {
         companionTableBlock.hidden = true;
     }
 
+    if (guestError) {
+        guestError.textContent = mensaje;
+    }
 }
 
-        if (companionTableBlock) {
-    companionTableBlock.hidden = true;
+
+if (!guestId) {
+
+    mostrarInvitadoGeneral(
+        "Esta es una vista general de la invitación."
+    );
+
+    return;
 }
 
-        if (guestError) {
-            guestError.textContent = mensaje;
-        }
+
+try {
+
+    const response = await fetch(
+        "./invitados.json?v=38"
+    );
+
+    if (!response.ok) {
+        throw new Error(
+            "No se pudo cargar invitados.json"
+        );
     }
 
 
-    if (!guestId) {
+    const guests = await response.json();
+
+    const selectedGuest = guests[guestId];
+
+
+    // =====================
+    // VERIFICAR INVITADO
+    // =====================
+
+    if (!selectedGuest) {
+
         mostrarInvitadoGeneral(
-            "Esta es una vista general de la invitación."
+            "El enlace de esta invitación no es válido."
         );
 
         return;
     }
 
-    try {
-        const response = await fetch(
-            "./invitados.json?v=37"
-        );
 
-        if (!response.ok) {
-            throw new Error(
-                "No se pudo cargar invitados.json"
-            );
-        }
+    // =====================
+    // NOMBRE DEL INVITADO
+    // =====================
 
-        const guests = await response.json();
-        const selectedGuest = guests[guestId];
-
-        if (!selectedGuest) {
-            mostrarInvitadoGeneral(
-                "El enlace de esta invitación no es válido."
-            );
-
-            return;
-        }
-
-        if (guestName) {
-            guestName.textContent =
-                selectedGuest.nombre;
-        }
-
-        if (tableGuestName) {
-            tableGuestName.textContent =
-                selectedGuest.nombre;
-        }
-
-        if (guestTable) {
-            guestTable.textContent =
-                selectedGuest.mesa ||
-                "Por confirmar";
-        }
-
-        if (guestError) {
-            guestError.textContent = "";
-        }
-
-    } catch (error) {
-        console.error(
-            "Error al cargar al invitado:",
-            error
-        );
-
-        mostrarInvitadoGeneral(
-            "No fue posible cargar la invitación personalizada."
-        );
+    if (guestName) {
+        guestName.textContent =
+            selectedGuest.nombre;
     }
+
+
+    // =====================
+    // NOMBRE EN LA MESA
+    // =====================
+
+    if (tableGuestName) {
+        tableGuestName.textContent =
+            selectedGuest.nombre;
+    }
+
+
+    // =====================
+    // MESA PRINCIPAL
+    // =====================
+
+    if (guestTable) {
+        guestTable.textContent =
+            selectedGuest.mesa ||
+            "Por confirmar";
+    }
+
+
+    // =====================
+    // ACOMPAÑANTE
+    // =====================
+
+    if (
+        selectedGuest.acompanante &&
+        selectedGuest.acompanante.mesa
+    ) {
+
+        // Nombre o texto del acompañante
+        if (companionName) {
+
+            companionName.textContent =
+                selectedGuest.acompanante.texto ||
+                "Tu acompañante";
+
+        }
+
+
+        // Mesa del acompañante
+        if (companionTable) {
+
+            companionTable.textContent =
+                selectedGuest.acompanante.mesa;
+
+        }
+
+
+        // Mostrar segunda mesa
+        if (companionTableBlock) {
+
+            companionTableBlock.hidden = false;
+
+        }
+
+    } else {
+
+        // Invitación normal:
+        // mantener segunda mesa oculta
+
+        if (companionTableBlock) {
+
+            companionTableBlock.hidden = true;
+
+        }
+
+    }
+
+
+    // =====================
+    // LIMPIAR MENSAJE ERROR
+    // =====================
+
+    if (guestError) {
+        guestError.textContent = "";
+    }
+
+
+} catch (error) {
+
+    console.error(
+        "Error al cargar al invitado:",
+        error
+    );
+
+
+    mostrarInvitadoGeneral(
+        "No fue posible cargar la invitación personalizada."
+    );
+
+}
+
 }
 
 loadGuest();
