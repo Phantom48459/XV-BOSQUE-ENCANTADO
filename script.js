@@ -32,15 +32,7 @@ async function loadGuest() {
             guestTable.textContent = "Por confirmar";
         }
 
-        if (companionTableBlock) {
-    companionTableBlock.hidden = true;
-}
-
-        if (guestError) {
-            guestError.textContent = mensaje;
-        }
-    }
-    /* ===================== */
+        /* ===================== */
 /* ACOMPAÑANTE */
 /* ===================== */
 
@@ -72,6 +64,16 @@ if (
 
 }
 
+        if (companionTableBlock) {
+    companionTableBlock.hidden = true;
+}
+
+        if (guestError) {
+            guestError.textContent = mensaje;
+        }
+    }
+
+
     if (!guestId) {
         mostrarInvitadoGeneral(
             "Esta es una vista general de la invitación."
@@ -82,7 +84,7 @@ if (
 
     try {
         const response = await fetch(
-            "./invitados.json?v=26"
+            "./invitados.json?v=37"
         );
 
         if (!response.ok) {
