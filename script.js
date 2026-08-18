@@ -3,6 +3,15 @@ const guestTable = document.getElementById("guestTable");
 const tableGuestName = document.getElementById("tableGuestName");
 const guestError = document.getElementById("guestError");
 
+const companionTableBlock =
+    document.getElementById("companionTableBlock");
+
+const companionName =
+    document.getElementById("companionName");
+
+const companionTable =
+    document.getElementById("companionTable");
+
 async function loadGuest() {
     const urlParameters = new URLSearchParams(
         window.location.search
@@ -23,10 +32,45 @@ async function loadGuest() {
             guestTable.textContent = "Por confirmar";
         }
 
+        if (companionTableBlock) {
+    companionTableBlock.hidden = true;
+}
+
         if (guestError) {
             guestError.textContent = mensaje;
         }
     }
+    /* ===================== */
+/* ACOMPAÑANTE */
+/* ===================== */
+
+if (
+    selectedGuest.acompanante &&
+    selectedGuest.acompanante.mesa
+) {
+
+    if (companionName) {
+        companionName.textContent =
+            selectedGuest.acompanante.texto ||
+            "Tu acompañante";
+    }
+
+    if (companionTable) {
+        companionTable.textContent =
+            selectedGuest.acompanante.mesa;
+    }
+
+    if (companionTableBlock) {
+        companionTableBlock.hidden = false;
+    }
+
+} else {
+
+    if (companionTableBlock) {
+        companionTableBlock.hidden = true;
+    }
+
+}
 
     if (!guestId) {
         mostrarInvitadoGeneral(
