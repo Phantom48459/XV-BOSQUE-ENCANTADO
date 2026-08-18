@@ -3,6 +3,12 @@ const guestTable = document.getElementById("guestTable");
 const tableGuestName = document.getElementById("tableGuestName");
 const guestError = document.getElementById("guestError");
 
+const guestCompanionBlock =
+    document.getElementById("guestCompanionBlock");
+
+const guestCompanionName =
+    document.getElementById("guestCompanionName");
+
 const companionTableBlock =
     document.getElementById("companionTableBlock");
 
@@ -19,7 +25,7 @@ async function loadGuest() {
 
     const guestId = urlParameters.get("id");
 
-    function mostrarInvitadoGeneral(mensaje = "") {
+   function mostrarInvitadoGeneral(mensaje = "") {
 
     if (guestName) {
         guestName.textContent = "Invitado especial";
@@ -33,7 +39,12 @@ async function loadGuest() {
         guestTable.textContent = "Por confirmar";
     }
 
-    // Ocultar acompañante en invitaciones generales
+    // Ocultar acompañante en la primera pantalla
+    if (guestCompanionBlock) {
+        guestCompanionBlock.hidden = true;
+    }
+
+    // Ocultar segunda mesa
     if (companionTableBlock) {
         companionTableBlock.hidden = true;
     }
@@ -96,100 +107,75 @@ try {
     }
 
 
+  /* ===================== */
+/* ACOMPAÑANTE */
+/* ===================== */
+
+if (
+    selectedGuest.acompanante &&
+    selectedGuest.acompanante.mesa
+) {
+
+    const nombreAcompanante =
+        selectedGuest.acompanante.nombre ||
+        "Tu acompañante";
+
+
     // =====================
-    // NOMBRE EN LA MESA
+    // PRIMERA PANTALLA
     // =====================
 
-    if (tableGuestName) {
-        tableGuestName.textContent =
-            selectedGuest.nombre;
+    if (guestCompanionName) {
+        guestCompanionName.textContent =
+            nombreAcompanante;
+    }
+
+    if (guestCompanionBlock) {
+        guestCompanionBlock.hidden = false;
     }
 
 
     // =====================
-    // MESA PRINCIPAL
+    // PANTALLA DE MESA
     // =====================
 
-    if (guestTable) {
-        guestTable.textContent =
-            selectedGuest.mesa ||
-            "Por confirmar";
+    if (companionName) {
+        companionName.textContent =
+            nombreAcompanante;
     }
 
-
-    // =====================
-    // ACOMPAÑANTE
-    // =====================
-
-    if (
-        selectedGuest.acompanante &&
-        selectedGuest.acompanante.mesa
-    ) {
-
-        // Nombre o texto del acompañante
-        if (companionName) {
-
-            companionName.textContent =
-                selectedGuest.acompanante.texto ||
-                "Tu acompañante";
-
-        }
-
-
-        // Mesa del acompañante
-        if (companionTable) {
-
-            companionTable.textContent =
-                selectedGuest.acompanante.mesa;
-
-        }
-
-
-        // Mostrar segunda mesa
-        if (companionTableBlock) {
-
-            companionTableBlock.hidden = false;
-
-        }
-
-    } else {
-
-        // Invitación normal:
-        // mantener segunda mesa oculta
-
-        if (companionTableBlock) {
-
-            companionTableBlock.hidden = true;
-
-        }
-
+    if (companionTable) {
+        companionTable.textContent =
+            selectedGuest.acompanante.mesa;
     }
 
-
-    // =====================
-    // LIMPIAR MENSAJE ERROR
-    // =====================
-
-    if (guestError) {
-        guestError.textContent = "";
+    if (companionTableBlock) {
+        companionTableBlock.hidden = false;
     }
 
+} else {
+
+    // Invitación normal
+
+    if (guestCompanionBlock) {
+        guestCompanionBlock.hidden = true;
+    }
+
+    if (companionTableBlock) {
+        companionTableBlock.hidden = true;
+    }
+}
 
 } catch (error) {
-
-    console.error(
-        "Error al cargar al invitado:",
-        error
-    );
-
-
+    console.error("Error al cargar la invitación:", error);
     mostrarInvitadoGeneral(
-        "No fue posible cargar la invitación personalizada."
+        "Hubo un problema al cargar la invitación."
     );
-
+    
 }
 
 }
+
 
 loadGuest();
 

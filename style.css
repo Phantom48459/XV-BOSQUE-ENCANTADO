@@ -2450,3 +2450,52 @@ button:hover {
         font-size: 20px;
     }
 }
+/* ============================= */
+/* ACOMPAÑANTE EN INVITACIÓN */
+/* ============================= */
+
+.guest-companion {
+    margin-top: 10px;
+
+    text-align: center;
+}
+
+.guest-companion[hidden] {
+    display: none !important;
+}
+
+.guest-companion-and {
+    display: block;
+
+    margin: 5px 0;
+
+    color: #d4af37;
+
+    font-family: 'Cinzel', serif;
+    font-size: 19px;
+}
+
+.guest-companion-name {
+    display: block;
+
+    color: #f3d878;
+
+    font-family: 'Cinzel', serif;
+    font-size: clamp(27px, 6vw, 48px);
+    font-weight: 600;
+    line-height: 1.25;
+
+    text-shadow:
+        0 0 22px rgba(212, 175, 55, 0.22);
+}
+
+@media (max-width: 600px) {
+
+    .guest-companion-and {
+        font-size: 16px;
+    }
+
+    .guest-companion-name {
+        font-size: clamp(25px, 8vw, 38px);
+    }
+}
