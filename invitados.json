@@ -19,8 +19,8 @@
     "nombre": "Valeria Hernández",
     "mesa": "3",
     "acompanante": {
-        "texto": "Tu acompañante",
-        "mesa": "12"
+      "texto": "Tu acompañante",
+      "mesa": "12"
     }
-}
+  }
 }
