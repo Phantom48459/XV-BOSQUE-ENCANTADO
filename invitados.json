@@ -14,5 +14,13 @@
   "004": {
     "nombre": "Padrinos de la quinceañera",
     "mesa": "Principal"
-  }
+  },
+  "005": {
+    "nombre": "Valeria Hernández",
+    "mesa": "3",
+    "acompanante": {
+        "texto": "Tu acompañante",
+        "mesa": "12"
+    }
+}
 }
