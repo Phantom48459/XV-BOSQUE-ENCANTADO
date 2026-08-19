@@ -2407,9 +2407,9 @@ button:hover {
         font-size: clamp(25px, 8vw, 38px);
     }
 }
-/* ================================= */
+/* ============================= */
 /* LISTAS DE INVITADOS */
-/* ================================= */
+/* ============================= */
 
 #guestName,
 #tableGuestName,
@@ -2422,7 +2422,7 @@ button:hover {
 }
 
 
-/* Cada persona */
+
 
 .guest-name-line {
     display: block;
@@ -2440,8 +2440,25 @@ button:hover {
     color: inherit;
 }
 
+.guest-companion {
+    margin-top: 12px;
+}
 
-/* En celular */
+.guest-companion[hidden],
+.companion-table-block[hidden] {
+    display: none !important;
+}
+
+.guest-companion-and {
+    display: block;
+
+    margin: 8px 0;
+
+    color: #d4af37;
+
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+}
 
 @media (max-width: 600px) {
 

@@ -3,11 +3,11 @@ const guestTable = document.getElementById("guestTable");
 const tableGuestName = document.getElementById("tableGuestName");
 const guestError = document.getElementById("guestError");
 
-const guestCompanionBlock =
-    document.getElementById("guestCompanionBlock");
 
-const guestCompanionName =
-    document.getElementById("guestCompanionName");
+
+
+
+
 
 const companionTableBlock =
     document.getElementById("companionTableBlock");
@@ -18,18 +18,18 @@ const companionName =
 const companionTable =
     document.getElementById("companionTable");
 
-async function loadGuest() {
-    const urlParameters = new URLSearchParams(
-        window.location.search
-    );
+const guestCompanionBlock =
+    document.getElementById("guestCompanionBlock");
 
-    const guestId = urlParameters.get("id");
+const guestCompanionName =
+    document.getElementById("guestCompanionName");
 
-   function mostrarInvitadoGeneral(mensaje = "") {
 
-    function mostrarListaNombres(elemento, nombres) {
+function mostrarListaNombres(elemento, nombres) {
 
-    if (!elemento) return;
+    if (!elemento) {
+        return;
+    }
 
     elemento.innerHTML = "";
 
@@ -42,6 +42,7 @@ async function loadGuest() {
         const linea = document.createElement("span");
 
         linea.classList.add("guest-name-line");
+
         linea.textContent = nombre;
 
         elemento.appendChild(linea);
@@ -50,152 +51,184 @@ async function loadGuest() {
 }
 
 
-mostrarListaNombres(
-    guestName,
-    selectedGuest.nombre
-);
+async function loadGuest() {
 
-mostrarListaNombres(
-    tableGuestName,
-    selectedGuest.nombre
-);
+    const urlParameters =
+        new URLSearchParams(window.location.search);
 
-    if (guestTable) {
-        guestTable.textContent = "Por confirmar";
-    }
-
-    // Ocultar acompañante en la primera pantalla
-    if (guestCompanionBlock) {
-        guestCompanionBlock.hidden = true;
-    }
-
-    // Ocultar segunda mesa
-    if (companionTableBlock) {
-        companionTableBlock.hidden = true;
-    }
-
-    if (guestError) {
-        guestError.textContent = mensaje;
-    }
-}
+    const guestId =
+        urlParameters.get("id");
 
 
-if (!guestId) {
+    function mostrarInvitadoGeneral(mensaje = "") {
 
-    mostrarInvitadoGeneral(
-        "Esta es una vista general de la invitación."
-    );
+        if (guestName) {
+            guestName.textContent = "Invitado especial";
+        }
 
-    return;
-}
+        if (tableGuestName) {
+            tableGuestName.textContent = "Invitado especial";
+        }
 
+        if (guestTable) {
+            guestTable.textContent = "Por confirmar";
+        }
 
-try {
+        if (guestCompanionBlock) {
+            guestCompanionBlock.hidden = true;
+        }
 
-    const response = await fetch(
-        "./invitados.json?v=41"
-    );
+        if (companionTableBlock) {
+            companionTableBlock.hidden = true;
+        }
 
-    if (!response.ok) {
-        throw new Error(
-            "No se pudo cargar invitados.json"
-        );
+        if (guestError) {
+            guestError.textContent = mensaje;
+        }
     }
 
 
-    const guests = await response.json();
-
-    const selectedGuest = guests[guestId];
-
-
-    // =====================
-    // VERIFICAR INVITADO
-    // =====================
-
-    if (!selectedGuest) {
+    if (!guestId) {
 
         mostrarInvitadoGeneral(
-            "El enlace de esta invitación no es válido."
+            "Esta es una vista general de la invitación."
         );
 
         return;
     }
 
 
-    // =====================
-    // NOMBRE DEL INVITADO
-    // =====================
+    try {
 
-    if (guestName) {
-        guestName.textContent =
-            selectedGuest.nombre;
+        const response = await fetch(
+            "./invitados.json?v=42"
+        );
+
+        if (!response.ok) {
+
+            throw new Error(
+                "No se pudo cargar invitados.json"
+            );
+        }
+
+
+        const guests =
+            await response.json();
+
+        const selectedGuest =
+            guests[guestId];
+
+            
+
+        if (!selectedGuest) {
+
+            mostrarInvitadoGeneral(
+                "El enlace de esta invitación no es válido."
+            );
+
+            return;
+        }
+
+
+        /* ===================== */
+        /* INVITADOS PRINCIPALES */
+        /* ===================== */
+
+        mostrarListaNombres(
+            guestName,
+            selectedGuest.nombre
+        );
+
+        mostrarListaNombres(
+            tableGuestName,
+            selectedGuest.nombre
+        );
+
+
+        if (guestTable) {
+
+            guestTable.textContent =
+                selectedGuest.mesa ||
+                "Por confirmar";
+        }
+
+
+        /* ===================== */
+        /* ACOMPAÑANTES */
+        /* ===================== */
+
+        if (
+            selectedGuest.acompanante &&
+            selectedGuest.acompanante.mesa
+        ) {
+
+            const nombresAcompanantes =
+                selectedGuest.acompanante.nombre ||
+                ["Tu acompañante"];
+
+
+            /* PRIMERA PANTALLA */
+
+            mostrarListaNombres(
+                guestCompanionName,
+                nombresAcompanantes
+            );
+
+            if (guestCompanionBlock) {
+
+                guestCompanionBlock.hidden = false;
+            }
+
+
+            /* PANTALLA DE MESA */
+
+            mostrarListaNombres(
+                companionName,
+                nombresAcompanantes
+            );
+
+            if (companionTable) {
+
+                companionTable.textContent =
+                    selectedGuest.acompanante.mesa;
+            }
+
+            if (companionTableBlock) {
+
+                companionTableBlock.hidden = false;
+            }
+
+        } else {
+
+            if (guestCompanionBlock) {
+
+                guestCompanionBlock.hidden = true;
+            }
+
+            if (companionTableBlock) {
+
+                companionTableBlock.hidden = true;
+            }
+        }
+
+
+        if (guestError) {
+
+            guestError.textContent = "";
+        }
+
+
+    } catch (error) {
+
+        console.error(
+            "Error al cargar al invitado:",
+            error
+        );
+
+        mostrarInvitadoGeneral(
+            "No fue posible cargar la invitación personalizada."
+        );
     }
-
-
-  /* ===================== */
-/* ACOMPAÑANTE */
-/* ===================== */
-
-if (
-    selectedGuest.acompanante &&
-    selectedGuest.acompanante.mesa
-) {
-
-    
-
-    // =====================
-    // PRIMERA PANTALLA
-    // =====================
-
-    mostrarListaNombres(
-    guestCompanionName,
-    selectedGuest.acompanante.nombre
-);
-
-    if (guestCompanionBlock) {
-        guestCompanionBlock.hidden = false;
-    }
-
-
-    // =====================
-    // PANTALLA DE MESA
-    // =====================
-
-    mostrarListaNombres(
-    companionName,
-    selectedGuest.acompanante.nombre
-);
-
-    if (companionTable) {
-        companionTable.textContent =
-            selectedGuest.acompanante.mesa;
-    }
-
-    if (companionTableBlock) {
-        companionTableBlock.hidden = false;
-    }
-
-} else {
-
-    // Invitación normal
-
-    if (guestCompanionBlock) {
-        guestCompanionBlock.hidden = true;
-    }
-
-    if (companionTableBlock) {
-        companionTableBlock.hidden = true;
-    }
-}
-
-} catch (error) {
-    console.error("Error al cargar la invitación:", error);
-    mostrarInvitadoGeneral(
-        "Hubo un problema al cargar la invitación."
-    );
-
-}
-
 }
 
 
