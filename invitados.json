@@ -1,16 +1,16 @@
 {
   "001": {
     "nombre": [
-      "Abuela Martina Cach",
-      "Abuelo Wilfrido Sanchez"
+      "Abuelo Wilfrido Sanchez",
+      "Abuela Martina Cach"
     ],
     "mesa": "1"
   },
 
   "002": {
     "nombre": [
-      "Sra. Leydi Sanchez",
-      "Sr. Freddy Aguilar"
+      "Sr. Freddy Aguilar",
+      "Sra. Leydi Sanchez"
     ],
     "mesa": "1",
     "acompanante": {
@@ -23,8 +23,9 @@
 
   "003": {
     "nombre": [
-      "Sra. Lucy Sanchez",
+
       "Sr. Carlos Fuentes",
+      "Sra. Lucy Sanchez",
       "Joven Fredy Fuentes",
       "Srta. Lucy Fuentes",
       "Joven Paulo Cambranis"
@@ -34,9 +35,9 @@
 
   "004": {
     "nombre": [
-      "Alejandra",
-      "José",
-      "Alex"
+      "Sr. José",
+      "Sra. Alejandra",
+      "Joven Alex"
     ],
     "mesa": "2"
   },
@@ -64,13 +65,13 @@
 
   "008": {
     "nombre": [
-      "Sra. Celina Loria",
-      "Sr. Francisco May"
+      "Sr. Francisco May",
+      "Sra. Celina Loria"
     ],
     "mesa": "6",
     "acompanante": {
       "nombre": [
-        "Joven Fernando",
+        "Joven Fernando ",
         "Srta. Hannia"
       ],
       "mesa": "3"
@@ -160,7 +161,7 @@
 
   "015": {
     "nombre": [
-      "Sra. Yamili"
+      "Sra. Yamili Pech"
     ],
     "mesa": "5"
   },
@@ -182,8 +183,9 @@
 
   "018": {
     "nombre": [
-      "Sra. Mayra López",
+
       "Sr. Leonardo Juárez",
+      "Sra. Mayra López",
       "Hijo Antoni Lopez"
     ],
     "mesa": "6"
@@ -212,8 +214,8 @@
 
   "022": {
     "nombre": [
-      "Sra. Teresa",
-      "Sr. Roger",
+      "Abuelo Roger",
+      "Abuela Teresa",
       "Srta. Berenice"
     ],
     "mesa": "7"
@@ -296,8 +298,8 @@
 
   "032": {
     "nombre": [
-      "Lizbeth Castillo",
-      "Luis Perez"
+      "Sr. Luis Perez",
+      "Sra. Lizbeth Castillo"
     ],
     "mesa": "9",
     "acompanante": {
