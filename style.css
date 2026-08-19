@@ -2468,3 +2468,15 @@ button:hover {
     }
 
 }
+.program-verse {
+    margin-top: 8px;
+
+    color: #d4af37 !important;
+
+    font-family: 'Cinzel', serif;
+
+    font-size: 14px !important;
+    font-weight: 600;
+
+    letter-spacing: 1px;
+}
