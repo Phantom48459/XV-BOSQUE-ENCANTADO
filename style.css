@@ -2407,3 +2407,47 @@ button:hover {
         font-size: clamp(25px, 8vw, 38px);
     }
 }
+/* ================================= */
+/* LISTAS DE INVITADOS */
+/* ================================= */
+
+#guestName,
+#tableGuestName,
+#guestCompanionName,
+#companionName {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+
+/* Cada persona */
+
+.guest-name-line {
+    display: block;
+
+    width: 100%;
+
+    font-family: 'Cinzel', serif;
+
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 1.2;
+
+    text-align: center;
+
+    color: inherit;
+}
+
+
+/* En celular */
+
+@media (max-width: 600px) {
+
+    .guest-name-line {
+        font-size: 27px;
+        line-height: 1.25;
+    }
+
+}

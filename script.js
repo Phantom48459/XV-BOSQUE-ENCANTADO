@@ -27,13 +27,38 @@ async function loadGuest() {
 
    function mostrarInvitadoGeneral(mensaje = "") {
 
-    if (guestName) {
-        guestName.textContent = "Invitado especial";
-    }
+    function mostrarListaNombres(elemento, nombres) {
 
-    if (tableGuestName) {
-        tableGuestName.textContent = "Invitado especial";
-    }
+    if (!elemento) return;
+
+    elemento.innerHTML = "";
+
+    const lista = Array.isArray(nombres)
+        ? nombres
+        : [nombres];
+
+    lista.forEach(nombre => {
+
+        const linea = document.createElement("span");
+
+        linea.classList.add("guest-name-line");
+        linea.textContent = nombre;
+
+        elemento.appendChild(linea);
+
+    });
+}
+
+
+mostrarListaNombres(
+    guestName,
+    selectedGuest.nombre
+);
+
+mostrarListaNombres(
+    tableGuestName,
+    selectedGuest.nombre
+);
 
     if (guestTable) {
         guestTable.textContent = "Por confirmar";
@@ -68,7 +93,7 @@ if (!guestId) {
 try {
 
     const response = await fetch(
-        "./invitados.json?v=38"
+        "./invitados.json?v=41"
     );
 
     if (!response.ok) {
@@ -116,19 +141,16 @@ if (
     selectedGuest.acompanante.mesa
 ) {
 
-    const nombreAcompanante =
-        selectedGuest.acompanante.nombre ||
-        "Tu acompañante";
-
+    
 
     // =====================
     // PRIMERA PANTALLA
     // =====================
 
-    if (guestCompanionName) {
-        guestCompanionName.textContent =
-            nombreAcompanante;
-    }
+    mostrarListaNombres(
+    guestCompanionName,
+    selectedGuest.acompanante.nombre
+);
 
     if (guestCompanionBlock) {
         guestCompanionBlock.hidden = false;
@@ -139,10 +161,10 @@ if (
     // PANTALLA DE MESA
     // =====================
 
-    if (companionName) {
-        companionName.textContent =
-            nombreAcompanante;
-    }
+    mostrarListaNombres(
+    companionName,
+    selectedGuest.acompanante.nombre
+);
 
     if (companionTable) {
         companionTable.textContent =
@@ -171,7 +193,7 @@ if (
     mostrarInvitadoGeneral(
         "Hubo un problema al cargar la invitación."
     );
-    
+
 }
 
 }
