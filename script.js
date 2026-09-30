@@ -107,7 +107,7 @@ async function loadGuest() {
         if (!response.ok) {
 
             throw new Error(
-                "No se pudo cargar invitados.json"
+                "No se pudo cargar la lista invitados.json"
             );
         }
 
